@@ -64,8 +64,9 @@ class MakeModuleCommand extends Command
         // Generate Route in api.php
 
         $filePath = base_path('routes/api.php');
-        if (File::exists($filePath)) {
-
+        if (!File::exists($filePath)) {
+            $this->error("api.php not found or route creation error !");
+        } else {
             $routeCode = <<<EOD
         Route::group([
             'middleware' => ['auth:sanctum'],
@@ -81,8 +82,6 @@ class MakeModuleCommand extends Command
             File::append($filePath, PHP_EOL . $routeCode);
             $this->warn("6. ");
             $this->info("Route for $name added successfully to api.php");
-        } else {
-            $this->error("api.php not found or route creation error !");
         }
 
         // Generate Repository
