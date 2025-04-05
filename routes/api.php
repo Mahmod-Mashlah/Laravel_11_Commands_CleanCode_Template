@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -12,6 +13,6 @@ Route::group([
     'prefix' => 'car',
     'as' => 'car'
 ], function () {
-    Route::get("/car",[CarController::class, 'index']);
-    Route::post("/car",[CarController::class, 'store']);
+    Route::get("/car", [CarController::class, 'index']);
+    Route::post("/car", [CarController::class, 'store']);
 });
