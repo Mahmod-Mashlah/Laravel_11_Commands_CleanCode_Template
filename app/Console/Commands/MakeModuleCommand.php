@@ -81,8 +81,6 @@ class MakeModuleCommand extends Command
             File::append($filePath, PHP_EOL . $routeCode);
             $this->warn("6. ");
             $this->info("Route for $name added successfully to api.php");
-
-            return;
         } else {
             $this->error("api.php not found or route creation error !");
         }
